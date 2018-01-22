@@ -1,0 +1,27 @@
+<html>
+<head>
+	<meta charset="utf-8">
+</head>
+<body>
+	<form method="GET" action="HTML2.html" id="form1"
+			onsubmit="console.log('form tag'); return false;">
+											<!-- false리턴하면 html2로 데이터 안보내짐-->
+		이름: <input type="text" name="name"><br>
+		메세지: <input type="text" name="msg"><br>
+		<input type="submit">
+	</form>
+	<script>
+		var t = document.getElementById("form1");
+		t.onsubmit = function a() { //onsubmit이 위의꺼가 아니라 function a로 덮어쓰여짐.
+			console.log("from property");
+			return false;
+		}
+		function b() {
+			console.log("from addEventListener");
+			return false;
+		}
+		t.addEventListener("submit",b);//어떤이벤트인지와 리스너함수를 인자로 받음. addEventlisner는 덮어쓰지않고 추가되는 형식임
+		t.removeEventListener("submit",b);
+	</script>
+</body>
+</html>
