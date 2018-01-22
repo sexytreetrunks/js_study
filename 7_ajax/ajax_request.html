@@ -1,0 +1,50 @@
+<!--AJAX -> js를 통해 비동기적으로 http request를 보내고 응답을 받아 처리하는 기술-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	
+</head>
+<body>
+	<script>
+		var request = new XMLHttpRequest();
+
+		request.open("GET","./response.txt");//file 얻어올 방식(get/post)과 얻어올 리소스의 주소를 인자로 받음
+		request.send();
+		request.response;//이걸 통해서 reponse값을 출력할수 있음.
+		request.readyState;
+		//0: open메소드 호출 전
+		//1: open 호출 후 & send호출 전
+		//2: send보낸 뒤 응답 헤더가 수신된 후
+		//3: 응답 바디 수신중
+		//4: 모든 응답 수신완료
+		request.onreadystatechange//readyState가 변화할떄마다 readyStateChange라는 이벤드 발생함.
+		//이 이벤트를 핸들링하는 함수를 설정할수 있음.
+		request.onreadystatechange = function a() {
+			console.log(this.readyState);
+		}//초기값이 0이기때문에 0->1로 변화된 이후부터 1,2,3,4 차례대로 변화된 값이 출력됨.
+
+		var request2 = new XMLHttpRequest();
+		request2.open("GET","http://www.google.com");
+		request2.send();
+		request2.onreadystatechange = function b() {
+			console.log(this.readyState, this.status);
+		}//이렇게 되면 서버측에서 응답한 status값이 출력됨. ex) 200, 404..
+		//이 두 값을 이용해서 정상적인 response가 다 도착했을떄 값을 출력하는 코드를 짤수 있음
+
+		//ex)
+		request2.onreadystatechange() = function c() {
+			if(this.readyState == 4 && this.status == 200) 
+				console.log("Response OK");
+		}
+		//이외에도 다음과 같은 이벤트 핸들러가 있따
+		request2.onabort;
+		request2.onerror;
+		request2.onload;
+		request2.onprogress;
+		request2.ontimeout;
+		//등등등...
+	</script>
+</body>
+
+</html>
