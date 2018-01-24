@@ -38,9 +38,9 @@
 *Map*(key-value쌍으로이루어진 집합. 중복을허용하지않음)을 *Hash*라는 자료구조로 구현한것
 
 > [hashmap에서 해시충돌이 일어나면 어케 해결하징?](http://odol87.tistory.com/4)
-> 충돌난 인덱스에있는 값을 Head node로하는 linked list로 해결합니다
-> 요렇게 하나의 버켓(해쉬인덱스)에 여러 item을 chain처럼 저장하는걸 Seperate chaning이라고 부릅니다.
-> ![](https://he-s3.s3.amazonaws.com/media/uploads/0e2c706.png)
+> <br> 충돌난 인덱스에있는 값을 Head node로하는 linked list로 해결합니다
+> <br> 요렇게 하나의 버켓(해쉬인덱스)에 여러 item을 chain처럼 저장하는걸 Seperate chaning이라고 부릅니다.
+> <br> ![](https://he-s3.s3.amazonaws.com/media/uploads/0e2c706.png)
 
 ## 문제출제의도?
 [자바의 TreeMap은 Red-Black Tree로 구현되어있다.](http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/6-b14/java/util/TreeMap.java)
@@ -69,9 +69,11 @@
 __'둘다 blanced tree인데 왜 자바와씨쁠은 avl이아닌 Red-black을사용했을까'__ 라는 의문이 들수있음
 <br> 그이유는 rotation에드는 cost때문임
 - AVL은 좌우 child의 depth차이가 2이상일경우 트리를 재배치함(=rotation) 
-- AVL은RB에비해 balance를유지하기위한조건이좀더엄격함. (AVL 최대 depth차-2, RB 최대 depth차 - log(n)/2)
-<br> 그래서search연산을실행할때에는 avl이 rb에비해 젤깊은leaf까지의 깊이가좀더작으므로 빠를수는있겠음. (AVL lookup-> 1.44xlog(n), RB lookup -> 2xlog(n))
-<br> BUT balance를엄격하게유지하기위해 insert/delete할때 rotation하는횟수가 좀더많아짐
+- AVL은RB에비해 balance를유지하기위한조건이좀더엄격함. 
+<br> (AVL 최대 depth차-2, RB 최대 depth차 - log(n)/2)
+- 따라서 search연산을실행할때에는 avl이 rb에비해 젤깊은leaf까지의 깊이가좀더작으므로 빠를수는있겠음.
+<br> (AVL lookup-> 1.44xlog(n), RB lookup -> 2xlog(n))
+- BUT balance를엄격하게유지하기위해 insert/delete할때 rotation하는횟수가 좀더많아짐
 - RB의 경우 데이터가 랜덤하게 insert되어도 avl에비해 적고 균일한 횟수로 rotation이 일어난다고함
 
 ## 참조
