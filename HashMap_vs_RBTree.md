@@ -8,11 +8,10 @@
 <br><img src="http://cfile7.uf.tistory.com/image/265D7639581643112AEABA" width="370" height="300">
 
 ### B-Tree
-* make it balanced! -> __외동 못가지도록 하자__
-* 가질수 있는 자식노드의 최소, 최대가 정해져있는 tree 
+* make it balanced! 
+* 항목이 삽입되거나 삭제될 때, 내부 노드는 해당 범위의 자식 노드의 수를 만족시키기 위해 분리되거나 혹은 다른 노드와 합쳐지게 된다. <br>
 * 하나의 노드는 2개 이상의 값을 가질수 있음
 <br> _※ 하나의 노드에 2개 이상의 값이 들어가 있을경우 반드시 정렬된 상태로 있어야함_
-* 항목이 삽입되거나 삭제될 때, 내부 노드는 해당 범위의 자식 노드의 수를 만족시키기 위해 분리되거나 혹은 다른 노드와 합쳐지게 된다. <br>
 ![insertion](https://upload.wikimedia.org/wikipedia/commons/3/33/B_tree_insertion_example.png)
 > + 노드를 삽입했을때 child노드가 1개만있는 상황이 있을수도 있자나여 그럼 어케 하나여?
 > <br> --> child노드를 새로 만들지않고 parant가 될뻔한 노드에다가 데이터를 추가해 버려여. 
