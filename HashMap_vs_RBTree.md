@@ -8,31 +8,34 @@
 <br><img src="http://cfile7.uf.tistory.com/image/265D7639581643112AEABA" width="370" height="300">
 
 ### B-Tree
-* make it balanced!
+* make it balanced! -> __외동 못가지도록 하자__
 * 가질수 있는 자식노드의 최소, 최대가 정해져있는 tree 
 * 하나의 노드는 2개 이상의 값을 가질수 있음
 <br> _※ 하나의 노드에 2개 이상의 값이 들어가 있을경우 반드시 정렬된 상태로 있어야함_
-* __항목이 삽입되거나 삭제될 때, 내부 노드는 해당 범위의 자식 노드의 수를 만족시키기 위해 분리되거나 혹은 다른 노드와 합쳐지게 된다.__ <br>
+* 항목이 삽입되거나 삭제될 때, 내부 노드는 해당 범위의 자식 노드의 수를 만족시키기 위해 분리되거나 혹은 다른 노드와 합쳐지게 된다. <br>
 ![insertion](https://upload.wikimedia.org/wikipedia/commons/3/33/B_tree_insertion_example.png)
-> 노드를 삽입했을때 child노드가 1개만있는 상황이 있을수도 있자나여 그럼 어케 하나여?
-> --> child노드를 새로 만들지않고 parant가 될뻔한 노드에다가 데이터를 추가해 버려여. 
-> 그럼 만약에 노드를 추가했는데 child노드가 1개뿐이고 parent노드에 추가할자리도 없으면 어떡하죠?
-> --> 
-### 2-3 tree와 2-3-4tree
-* 2-3과 2-3-4는 트리가 가질수있는 node유형을 뜻함. 걍 트리가 가질수있는 child개수라고 생각하면 쉬움
+> + 노드를 삽입했을때 child노드가 1개만있는 상황이 있을수도 있자나여 그럼 어케 하나여?
+> <br> --> child노드를 새로 만들지않고 parant가 될뻔한 노드에다가 데이터를 추가해 버려여. 
+> + 그럼 만약에 노드를 추가했는데 child노드가 1개뿐이고 parent노드에 추가할자리도 없으면 어떡하죠?
+> <br> --> 추가하려는 부분을 child가 2개인 모양으로 재배치합니다.
+
+### 2-3-4 tree
+* 2-3-4는 트리가 가질수있는 node를 뜻함. 걍 트리가 가질수있는 child개수라고 생각하면 쉬움
 > 2노드: 하나의 node는 1개의 값과 2개의 child노드를 가질수 있음.(이진트리는 모두2노드로 구성되어있겠져?)
-> 3노드: 하나의 node는 2개의 값과 3개의 child노드를 가질수 있음.
-> 4노드: 맞춰보세용
-* 즉 2-3트리는 2,3개의 child를 가질수있고, 2-3-4트리는 2,3,4개의 child를 가질수있음.
-<br> 이름에서 짐작할수있듯 얘네는 child노드를 1개만 가질수 없음.
+> <br> 3노드: 하나의 node는 2개의 값과 3개의 child노드를 가질수 있음.
+> <br> 4노드: 맞춰보세용
+* 즉 2-3-4트리는 2,3,4개의 child를 가질수있고 1개의 child노드는 가질수없음
+![](http://cfile4.uf.tistory.com/image/194B7A574D256DC5010ABB)
+* 모든 leaf 노드들의 depth는 동일하다
 
 ### Red Black tree
-2-3-4 tree를 이진트리형태로 구현한 tree
-
+* 2-3-4 tree를 이진트리형태로 구현한 tree
+* 2-3-4 tree에서 같은 노드에있던 데이터를 빨간색으로표현
+![](https://i.imgur.com/l6r9PSD.png)
+![](https://secweb.cs.odu.edu/~zeil/cs361/web/website/Lectures/avl/pages/redblacktree.gif)
 
 ## Hashmap
 *Map*(key-value쌍으로이루어진 집합. 중복을허용하지않음)을 *Hash*라는 자료구조로 구현한것
-<br> 그이상도 그이하도 하지않음
 
 > [hashmap에서 해시충돌이 일어나면 어케 해결하징?](http://odol87.tistory.com/4)
 > 충돌난 인덱스에있는 값을 첫번째 item으로하는 linked list로 해결합니다.
@@ -41,13 +44,14 @@
 
 ## 문제출제의도?
 [자바의 TreeMap은 Red-Black Tree로 구현되어있다.](http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/6-b14/java/util/TreeMap.java)
+<br> c++ 의 std::map 또한 red-black tree로 구현되어있음!
 <br> ∴ HashMap과 Red-Black Tree의 차이? = HashMap과 TreeMap의 차이?
 
 ## Treemap
 *map*을 *tree*라는 자료구조로 구현한것
 <br> BUT hash와 비교했을때 tree에는 큰특징이자 장점이있는데 바로 데이터를 정렬할수있다는거임
 <br> (심지어 넣으면 key값에따라 알아서 정렬됨)
-![상속관계](http://way2java.com/wp-content/uploads/2011/12/ss.png)
+<br> ![상속관계](http://way2java.com/wp-content/uploads/2011/12/ss.png)
 
 ## Hashmap vs Treemap
 키포인트는 데이터를 정렬하느냐 마느냐임
@@ -59,6 +63,9 @@ __hashmap은 데이터정렬을 보장하지않고 treemap은 데이터정렬을
 <br> --> O(log n) + f(m) (Red-Black tree이므로 rebalancing하는 시간도 추가됨)
 - 따라서n개의데이터를입력한다고했을때 hashmap의경우 O(n)이걸리지만 treemap의경우 O(n*log(n))이걸림
 
+## 예상질문?
+### AVL Tree vs Red-Black Tree
+'둘다 blanced tree인데 왜 자바와씨쁠은 avl이아닌 Red-black을사용했을까' 라는 의문이 들수있음
 
 ## 참조
 [B Tree](http://blog.naver.com/PostView.nhn?blogId=eng_jisikin&logNo=220889188747&parentCategoryNo=&categoryNo=6&viewDate=&isShowPopularPosts=true&from=search)
