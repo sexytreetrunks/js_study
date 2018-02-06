@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>script_pos</title>
+	<meta charset="utf-8">
+	<script>
+		function c(n) {
+			alert(n);
+			console.log(document.getElementById("songwriter"));
+			console.log(document.getElementById("lyrics"));
+		}
+		function d(n) {
+			var sum = 0;
+			for(var i=1; i <2000000000000; i++) {
+				sum+=n;
+			}
+			alert(sum);
+		}
+		c(1);
+	</script>
+<!-- java script를 통해 html에 접근하려면 html이 파싱된 후에 접근해야함-->
+</head>
+<body>
+	<script>c(2)</script>
+	<h1>script pos test</h1>
+	<script>c(3)</script>
+	<!--아직 songwriter,lyric 노드가 파싱되지 않았기 때문에 
+		여기까지는 log에 아무것도 뜨지않음 -->
+	<script>d(1)</script>
+	<!-- d함수 때문에 로딩이 느린것을 볼수있음
+		▷ 따라서 오래걸리는 js코드를 사용하려면 하단에 호출되도록해서 
+			html페이지를 미리 띄우고 js를 실행하도록 하자 -->
+	<p id="songwriter">이민정</p>
+	<script>c(4)</script>
+	<!-- songwriter만 log에 표시됨-->
+	<p id="lyrics">허공을 떠도는 작은 지민처럼 작은 지민처러엄</p>
+	<script>c(5)</script>
+	<!-- 따라서 html의 element를 사용하는 javascript를 작성한다면
+		해당 element들이 다 파싱되고 javascript가 호출되도록 해야함 -->
+
+	<!--나중에 공부해보기 
+		onload → eventhandler로써 파싱되기 전에 elememt에 접근하여 처리하는 함수 쓰고싶을때 사용
+		async, defer 속성 → 스크립트의 실행과 문서 로딩을 동시에 진행할수있음
+	-->
+</body>
+</html>
