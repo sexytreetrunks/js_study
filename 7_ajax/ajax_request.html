@@ -33,7 +33,7 @@
 		//이 두 값을 이용해서 정상적인 response가 다 도착했을떄 값을 출력하는 코드를 짤수 있음
 
 		//ex)
-		request2.onreadystatechange() = function c() {
+		request2.onreadystatechange = function c() {
 			if(this.readyState == 4 && this.status == 200) 
 				console.log("Response OK");
 		}
